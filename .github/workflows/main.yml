@@ -19,7 +19,10 @@ jobs:
 
     - name: 🔨 Build and start containers
       run: |
-        docker compose up --build -d
+         docker-compose up --build -d
 
     - name: 🧼 Clean up unused images (optional)
       run: docker image prune -af
+
+
+     
