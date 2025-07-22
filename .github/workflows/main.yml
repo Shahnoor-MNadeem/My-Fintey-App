@@ -7,22 +7,23 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted  # Runs on your EC2 runner
+    runs-on: self-hosted  # EC2 GitHub Runner
 
     steps:
-    - name: ⬇️ Checkout code
-      uses: actions/checkout@v3
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v3
 
-    - name: 🐳 Stop running containers (if any)
-      run: |
-        docker compose down || true
+      - name: 🐳 Stop running containers (if any)
+        run: |
+          docker compose down || true
 
-    - name: 🔨 Build and start containers
-      run: |
-         docker-compose up --build -d
+      - name: 📝 Write .env file for backend
+        run: |
+          echo "${{ secrets.BACKEND_ENV }}" > ./server/.env
+          chmod 600 ./server/.env
 
-    - name: 🧼 Clean up unused images (optional)
-      run: docker image prune -af
+      - name: 🔨 Build and start containers
+        run: docker compose up --build -d
 
-
-     
+      - name: 🧼 Clean up unused images (optional)
+        run: docker image prune -af
