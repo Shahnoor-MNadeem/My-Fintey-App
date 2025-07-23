@@ -22,7 +22,7 @@ export default function HeroSection() {
     return (
         <div className="hero-section text-center text-white d-flex align-items-center justify-content-center flex-column"  style={heroStyle} >
             <h1 className=" display-4 fw-bold">
-               <span style={{ color: "#000000" }}> Accept payments from</span> <br/> <span style={{ color: "#00C28B" }}>credit cards</span>
+               <span style={{ color: "#000000" }}> Accept payment from</span> <br/> <span style={{ color: "#00C28B" }}>credit cards</span>
             </h1>
             <p className="lead mt-3 text-dark">Simple and easy payments for your customers</p>
             <div className="mt-4">
